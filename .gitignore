@@ -1,5 +1,4 @@
 
-*/target/
 *.exe
 *.o
 *.a
@@ -11,12 +10,22 @@
 *.war
 *.ear
 *.jar
-
-*/.classpath
-*/.project
-*/.settings
-
+*.apk
 
 #python
 *.pyc
 */__pycache__/
+
+#eclipse
+*/.classpath
+*/.project
+*/.settings
+
+#intellij
+*/.idea/
+*/target/
+*/build/
+
+#gradle
+*/.gradle/
+*.log
