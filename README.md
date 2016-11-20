@@ -1,5 +1,7 @@
 #### framework-learning(框架学习)
 
+- gin-gorm
+- gradle-springboot
 - tornado-sqlalchemy
-- spring-springmvc-hibernate
 - spring-springmvc-mybaitis
+- spring-springmvc-hibernate
