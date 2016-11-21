@@ -1,13 +1,14 @@
-
 package main
 
-import "github.com/gin-gonic/gin"
-import "net/http"
-import "io"
-import "log"
-import "os"
-import "time"
-import "com/jiangKlijna/orm"
+import (
+  "github.com/gin-gonic/gin"
+  "net/http"
+  "io"
+  "log"
+  "os"
+  "time"
+  "com/jiangKlijna/orm"
+)
 
 type Bean struct{
   id int
