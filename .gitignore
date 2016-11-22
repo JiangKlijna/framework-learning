@@ -25,7 +25,12 @@
 */.idea/
 */target/
 */build/
+*.iws
+*.iml
+*.ipr
 
 #gradle
 */.gradle/
 *.log
+*/.springBeans
+!gradle-wrapper.jar

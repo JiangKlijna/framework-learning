@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class Application {
    @RequestMapping("/")
     public String greeting() {
-        return "Hello World!";
+        return "Hello SpringBoot!";
     }
 
     public static void main(String[] args) {
