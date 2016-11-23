@@ -23,15 +23,21 @@ class BaseHandler(tornado.web.RequestHandler):
 
 
 class IndexHandler(BaseHandler):
+    Path = r'/'
+
     def get(self):
         self.render('index.html')
 
 class StatusHandler(BaseHandler):
+    Path = r"/status/(\d+)"
+
     def get(self, input):
         self.write(input)
         self.set_status(int(input))
 
 class ArgHandler(BaseHandler):
+    Path = r"/arg"
+
     def get(self):
         self.post()
 
@@ -40,6 +46,8 @@ class ArgHandler(BaseHandler):
         self.render('arg.html', color=color)
 
 class AsyncHandler(BaseHandler):
+    Path = r"/async"
+
     @tornado.web.asynchronous
     def get(self):
         client = tornado.httpclient.AsyncHTTPClient()
@@ -50,6 +58,8 @@ class AsyncHandler(BaseHandler):
         self.finish()
 
 class CookieHandler(BaseHandler):
+    Path = r"/cookie"
+
     def get(self):
         count = self.get_secure_cookie("count")
         count = 1 if not count else int(count) + 1
@@ -57,6 +67,8 @@ class CookieHandler(BaseHandler):
         self.write(str(count))
 
 class DbHandler(BaseHandler):
+    Path = r"/api/db"
+
     def get(self):
         for v in range(20):
             self.db.add(User(username='username%s' % (v,), password='password%s' % (v,)))
@@ -68,10 +80,10 @@ class DbHandler(BaseHandler):
                 self.db.delete(u)
 
 handlers = [
-    (r'/', IndexHandler),
-    (r"/status/(\d+)", StatusHandler),
-    (r"/arg", ArgHandler),
-    (r"/async", AsyncHandler),
-    (r"/cookie", CookieHandler),
-    (r"/api/db", DbHandler),
+    (IndexHandler.Path, IndexHandler),
+    (StatusHandler.Path, StatusHandler),
+    (ArgHandler.Path, ArgHandler),
+    (AsyncHandler.Path, AsyncHandler),
+    (CookieHandler.Path, CookieHandler),
+    (DbHandler.Path, DbHandler)
 ]
