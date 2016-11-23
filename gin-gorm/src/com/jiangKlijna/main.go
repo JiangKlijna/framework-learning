@@ -44,7 +44,7 @@ var Endpoint = func(c *gin.Context) {
 
 func main() {
     orm.Test()
-    r := gin.Default()
+    var r *gin.Engine = gin.Default()
     r.Use(Logger())
 
     //r.Static("/static", "./static")
