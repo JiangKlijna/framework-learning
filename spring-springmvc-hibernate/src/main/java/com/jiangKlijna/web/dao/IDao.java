@@ -4,29 +4,29 @@ import java.io.Serializable;
 import java.util.List;
 
 public interface IDao {
-	public void close();
+    void close();
 
-	public org.hibernate.Query query(String hql);
+    org.hibernate.Query query(String hql);
 
-	public org.hibernate.Criteria criteria(Class<?> arg0);
+    org.hibernate.Criteria criteria(Class<?> arg0);
 
-	public org.hibernate.SQLQuery sqlQuery(String sql);
+    org.hibernate.SQLQuery sqlQuery(String sql);
 
-	public void save(Object obj);
+    void save(Object obj);
 
-	public void update(Object obj);
+    void update(Object obj);
 
-	public void delete(Object obj);
+    void delete(Object obj);
 
-	public Object get(Class<?> entityClazz, Serializable id);
+    Object get(Class<?> entityClazz, Serializable id);
 
-	public long findCount(Class<?> entityClazz);
+    long findCount(Class<?> entityClazz);
 
-	public List<?> find(String hql);
+    List<?> find(String hql);
 
-	public List<?> find(String hql, Object... params);
+    List<?> find(String hql, Object... params);
 
-	public List<?> findByPage(String hql, int pageNo, int pageSize);
+    List<?> findByPage(String hql, int pageNo, int pageSize);
 
-	public List<?> findByPage(String hql, int pageNo, int pageSize, Object... params);
+    List<?> findByPage(String hql, int pageNo, int pageSize, Object... params);
 }

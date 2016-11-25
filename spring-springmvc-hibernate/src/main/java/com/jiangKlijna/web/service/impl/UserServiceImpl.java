@@ -11,26 +11,35 @@ import com.jiangKlijna.web.service.UserService;
 @Service("userService")
 public class UserServiceImpl extends BaseService implements UserService {
 
-	@Override
-	public Result regist(String username, String password) {
-		try {
-			IDao dao = dao();
-			dao.save(new User(username, password));
-			return sucessResult();
-		} catch (Exception e) {
-			return errorResult(e.toString());
-		}
-	}
+    @Override
+    public Result regist(String username, String password) {
+        try {
+            IDao dao = dao();
+            dao.save(new User(username, password));
+            return sucessResult();
+        } catch (Exception e) {
+            return errorResult(e.toString());
+        }
+    }
 
-	@Override
-	public Result remove(int id, String username) {
-		try {
-			IDao dao = dao();
-			dao.delete(new User(id, username, ""));
-			return sucessResult();
-		} catch (Exception e) {
-			return errorResult(e.toString());
-		}
-	}
+    @Override
+    public Result remove(int id) {
+        try {
+            IDao dao = dao();
+            dao.delete(new User(id, "", ""));
+            return sucessResult();
+        } catch (Exception e) {
+            return errorResult(e.toString());
+        }
+    }
+
+    @Override
+    public Result find(int id) {
+        try {
+            return sucessResult(dao().get(User.class, id));
+        } catch (Exception e) {
+            return errorResult(e.toString());
+        }
+    }
 
 }

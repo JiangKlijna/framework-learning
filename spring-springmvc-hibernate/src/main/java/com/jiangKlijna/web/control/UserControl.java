@@ -12,33 +12,37 @@ import com.jiangKlijna.web.service.UserService;
 @Controller
 public class UserControl extends BaseControl {
 
-	@Resource(name = "userService")
-	public UserService us;
+    @Resource(name = "userService")
+    public UserService us;
 
-	@RequestMapping("/regist")
-	public void regist(String username, String password, String action) {
-		Result re = testParameter(username, password) ? us.regist(username, password) : errorParameterResult;
-		switch (action) {
-		case "html":
-			html(re.setData(username + password).toString());
-			break;
-		case "json":
-			json(re.setData(username + password));
-			break;
-		case "xml":
-			xml(re.setData(username + password));
-			break;
-		default:
-		case "text":
-			text(re.setData(username + password).toString());
-			break;
-		}
-	}
+    @RequestMapping("/regist")
+    public void regist(String username, String password, String action) {
+        Result re = testParameter(username, password, action) ? us.regist(username, password) : errorParameterResult;
+        switch (action) {
+            case "html":
+                html(re.setData(username + password).toString());
+                break;
+            case "json":
+                json(re.setData(username + password));
+                break;
+            case "xml":
+                xml(re.setData(username + password));
+                break;
+            default:
+            case "text":
+                text(re.setData(username + password).toString());
+                break;
+        }
+    }
 
-	@RequestMapping("/remove")
-	public void remove(int id, String username) {
-		Result re = us.remove(id, username);
-		xml(re.setData(username));
-	}
+    @RequestMapping("/remove")
+    public void remove(int id) {
+        Result re = us.remove(id);
+        xml(re.setData(id));
+    }
 
+    @RequestMapping("/find")
+    public void find(int id) {
+        xml(us.find(id));
+    }
 }
