@@ -3,18 +3,18 @@
 
 <mapper namespace="com.jiangKlijna.web.dao.IUserDao">
     <select id="get" parameterType="int" resultType="com.jiangKlijna.web.bean.User">
-        select * from mybatis_user where id=#{id}
+        select * from ssm_user where id=#{id}
     </select>
 
     <insert id="save" parameterType="com.jiangKlijna.web.bean.User">
-        insert into mybatis_user(username,password) values(#{username}, #{password})
+        insert into ssm_user(username,password) values(#{username}, #{password})
     </insert>
 
     <update id="update" parameterType="com.jiangKlijna.web.bean.User" >
-        update mybatis_user set username=#{username},password=#{password} where id=#{id}
+        update ssm_user set username=#{username},password=#{password} where id=#{id}
     </update>
 
     <delete id="delete" parameterType="int">
-        delete from mybatis_user where id=#{id}
+        delete from ssm_user where id=#{id}
     </delete>
 </mapper>
