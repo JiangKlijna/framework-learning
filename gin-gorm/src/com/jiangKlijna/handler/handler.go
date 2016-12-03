@@ -2,6 +2,7 @@ package handler
 
 import (
   "github.com/gin-gonic/gin"
+  "com/jiangKlijna/orm"
   "net/http"
   "io"
   "log"
@@ -66,8 +67,17 @@ var argHandler = func(c *gin.Context) {
     c.String(http.StatusOK, "id: ; page: ; name: ; message: "+ id +page+ name+ message)
 }
 
-var Endpoint = func(c *gin.Context) {
-  c.String(http.StatusOK, "Endpoint")
+var addHandler = func(c *gin.Context) {
+  db, err = orm.DB()
+  if err != nil {
+      log.Fatal(err)
+  }
+  db.Close()
+  c.String(http.StatusOK, "addHandler")
+}
+
+var delHandler = func(c *gin.Context) {
+  c.String(http.StatusOK, "delHandler")
 }
 
 func Handler(e *gin.Engine)  {
@@ -75,9 +85,9 @@ func Handler(e *gin.Engine)  {
   e.GET("/data/:name", dataHandler)
   e.POST("/upload", uploadHandler)
   e.POST("/arg", argHandler)
-  v1 := e.Group("/v1")
+  v1 := e.Group("/db")
   {
-    v1.POST("/login", Endpoint)
-    v1.GET("/submit", Endpoint)
+    v1.GET("/del", delHandler)
+    v1.GET("/add", addHandler)
   }
 }
