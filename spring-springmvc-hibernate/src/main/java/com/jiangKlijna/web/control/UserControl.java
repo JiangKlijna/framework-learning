@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jiangKlijna.web.bean.Result;
 import com.jiangKlijna.web.service.UserService;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @RequestMapping("/user")
 @Controller
@@ -15,34 +16,27 @@ public class UserControl extends BaseControl {
     @Resource(name = "userService")
     public UserService us;
 
-    @RequestMapping("/regist")
-    public void regist(String username, String password, String action) {
-        Result re = testParameter(username, password, action) ? us.regist(username, password) : errorParameterResult;
-        switch (action) {
-            case "html":
-                html(re.setData(username + password).toString());
-                break;
-            case "json":
-                json(re.setData(username + password));
-                break;
-            case "xml":
-                xml(re.setData(username + password));
-                break;
-            default:
-            case "text":
-                text(re.setData(username + password).toString());
-                break;
-        }
+    @ResponseBody
+    @RequestMapping("/regist.json")
+    public Result regist_json(String username, String password) {
+        return testParameter(username, password) ? us.regist(username, password) : errorParameterResult;
     }
 
-    @RequestMapping("/remove")
-    public void remove(int id) {
-        Result re = us.remove(id);
-        xml(re.setData(id));
+    @ResponseBody
+    @RequestMapping("/regist.xml")
+    public Result regist_xml(String username, String password) {
+        return testParameter(username, password) ? us.regist(username, password) : errorParameterResult;
     }
 
-    @RequestMapping("/find")
-    public void find(int id) {
-        xml(us.find(id));
+    @ResponseBody
+    @RequestMapping("/remove.json")
+    public Result remove(int id) {
+        return us.remove(id);
+    }
+
+    @ResponseBody
+    @RequestMapping("/find.xml")
+    public Result find(int id) {
+        return us.find(id);
     }
 }
