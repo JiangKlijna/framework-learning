@@ -10,10 +10,6 @@
       http://www.springframework.org/schema/mvc
       http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd">
 
-    <!--TODO
-    <bean id="dao" class="com.jiangKlijna.web.dao.HibernateDao" scope="request"
-          destroy-method="close"/>
--->
     <bean id="sucessResult" class="com.jiangKlijna.web.bean.Result" scope="request">
         <property name="code" value="0"/>
         <property name="message" value=""/>
