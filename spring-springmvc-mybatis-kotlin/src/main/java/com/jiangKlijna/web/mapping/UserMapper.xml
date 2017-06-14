@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jiangKlijna.web.dao.IUserDao">
+    <select id="get" parameterType="int" resultType="com.jiangKlijna.web.bean.User">
+        select * from ssm_user where id=#{id}
+    </select>
+
+    <insert id="save" parameterType="com.jiangKlijna.web.bean.User">
+        insert into ssm_user(username,password) values(#{username}, #{password})
+    </insert>
+
+    <update id="update" parameterType="com.jiangKlijna.web.bean.User" >
+        update ssm_user set username=#{username},password=#{password} where id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from ssm_user where id=#{id}
+    </delete>
+</mapper>
