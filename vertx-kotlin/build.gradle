@@ -20,7 +20,7 @@ sourceCompatibility = 1.8
 
 jar {
     manifest {
-        attributes 'Main-Class': 'com.jiangklijna.vertx.Application'
+        attributes 'Main-Class': 'com.jiangklijna.vertx.ApplicationKt'
     }
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
 //	into('lib') {from configurations.runtime}
@@ -35,7 +35,11 @@ dependencies {
     compile "io.vertx:vertx-web:$vertx_version"
     compile "io.vertx:vertx-web-client:$vertx_version"
     compile "io.vertx:vertx-jdbc-client:$vertx_version"
+    compile "io.vertx:vertx-web-templ-thymeleaf:$vertx_version"
 
+    compile group: 'log4j', name: 'log4j', version: '1.2.17'
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.25'
     compile 'org.postgresql:postgresql:9.4.1212'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     testCompile group: 'junit', name: 'junit', version: '4.12'
