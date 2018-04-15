@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTDSQL Map Config 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- 引入外部资源配置文件 -->
+    <!--<properties resource="jdbc.properties" />-->
+
+    <!-- 配置环境，制定数据库连接信息 -->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC" />
+            <dataSource type="com.jiangklijna.mybatis.HikariDataSourceFactory">
+                <property name="driverClassName" value="org.postgresql.Driver"/>
+                <property name="jdbcUrl" value="jdbc:postgresql://192.168.200.65:5432/test"/>
+                <property name="username" value="postgres"/>
+                <property name="password" value="jiangKlijna"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <!--<mapper resource="Mapper/UserMapper.xml"/>-->
+        <package name="com.jiangklijna.mybatis"/>
+    </mappers>
+</configuration>
