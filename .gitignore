@@ -22,9 +22,9 @@
 */.settings
 
 #intellij
-*/.idea/
-*/target/
-*/build/
+.idea/
+target/
+build/
 *.iws
 *.iml
 *.ipr
@@ -34,3 +34,6 @@
 *.log
 */.springBeans
 !gradle-wrapper.jar
+
+.idea/
+generation/
