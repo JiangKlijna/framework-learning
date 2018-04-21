@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<configuration xmlns="http://www.jooq.org/xsd/jooq-codegen-3.8.0.xsd">
+    <!-- 配置jdbc驱动连接 -->
+    <jdbc>
+        <driver>org.postgresql.Driver</driver>
+        <url>jdbc:postgresql://127.0.0.1:5432/test</url>
+        <user>postgres</user>
+        <password>74898489</password>
+    </jdbc>
+    <generator>
+        <!-- 代码生成器 -->
+        <name>org.jooq.util.JavaGenerator</name>
+        <database>
+            <!-- 数据库类型 -->
+            <name>org.jooq.util.postgres.PostgresDatabase</name>
+            <!-- 数据库名 -->
+            <inputSchema>public</inputSchema>
+            <!-- 生成包含，.*表示包含所有内容 -->
+            <includes>ssj_user</includes>
+            <!--剔除，此处未剔除 -->
+            <excludes></excludes>
+        </database>
+        <target>
+            <!-- 生成的代码所在的包结构 -->
+            <packageName>com.jiangKlijna.web.generation</packageName>
+            <!-- 生成的代码存放路径，默认会以src同目录开始 -->
+            <directory>src/main/java/</directory>
+        </target>
+    </generator>
+</configuration>
