@@ -30,7 +30,7 @@ build/
 *.ipr
 
 #gradle
-*/.gradle/
+.gradle
 *.log
 */.springBeans
 !gradle-wrapper.jar

@@ -1,0 +1,9 @@
+server:
+  port: 18080
+
+spring:
+  application:
+    name: dubbo-consumer
+dubbo:
+  application:
+    name:
