@@ -1,0 +1,12 @@
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+dependencies {
+
+}
+
+group 'com.cj.api'
+version '0.1'
+
+sourceCompatibility = 1.8
+
